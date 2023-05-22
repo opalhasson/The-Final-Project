@@ -1,0 +1,447 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Debian -- News -- Updated Debian 11: 11.6 released </title>
+  <link rel="author" href="mailto:webmaster@debian.org">
+  <meta name="Generator" content="WML 2.32.0">
+  <meta name="Modified" content="2023-04-30 11:34:13">
+  <meta name="viewport" content="width=device-width">
+  <meta name="mobileoptimized" content="300">
+  <meta name="HandheldFriendly" content="true">
+<link href="../../debian.css" rel="stylesheet" type="text/css">
+  <link href="../../debian-en.css" rel="stylesheet" type="text/css" media="all">
+<link rel="search" type="application/opensearchdescription+xml" title="Debian website search" href="../../search.en.xml">
+</head>
+<body>
+<div id="header">
+  <div id="upperheader">
+    <div id="logo">
+    <a href="../../" title="Debian Home"><img src="../../Pics/openlogo-50.png" alt="Debian" width="50" height="61"></a>
+    </div> <!-- end logo -->
+    <div id="searchbox">
+      <form name="p" method="get" action="https://search.debian.org/cgi-bin/omega">
+      <p>
+<input type="hidden" name="DB" value="en">
+        <input name="P" value="" size="14">
+        <input type="submit" value="Search">
+      </p>
+      </form>
+    </div>   <!-- end sitetools -->
+  </div> <!-- end upperheader -->
+  <!--UdmComment-->
+  <div id="navbar">
+    <p class="hidecss"><a href="#content">Skip Quicknav</a></p>
+    <ul>
+      <!-- Link to Debian's own Social Media resources -->
+      <li><a href="https://bits.debian.org/" title="Bits from Debian">Blog</a></li>
+      <li><a href="https://micronews.debian.org" title="Micronews from Debian">Micronews</a></li>
+      <li><a href="https://planet.debian.org/" title="The Planet of Debian">Planet</a></li>
+    </ul>
+  </div> <!-- end navbar -->
+<p id="breadcrumbs"><a href="./../">Latest News</a>
+ &#x2F; <a href="./">News from 2022</a>
+ &#x2F;
+News -- Updated Debian 11: 11.6 released</p>
+</div> <!-- end header -->
+<!--/UdmComment-->
+<div id="content">
+<h1>Updated Debian 11: 11.6 released</h1>
+<p><strong>December 17th, 2022</strong></p>
+<p>The Debian project is pleased to announce the sixth update of its
+stable distribution Debian 11 (codename <q>bullseye</q>).
+This point release mainly adds corrections for security issues,
+along with a few adjustments for serious problems. Security advisories
+have already been published separately and are referenced where available.</p>
+<p>Please note that the point release does not constitute a new version of Debian
+11 but only updates some of the packages included. There is
+no need to throw away old <q>bullseye</q> media. After installation,
+packages can be upgraded to the current versions using an up-to-date Debian
+mirror.</p>
+<p>Those who frequently install updates from security.debian.org won't have
+to update many packages, and most such updates are
+included in the point release.</p>
+<p>New installation images will be available soon at the regular locations.</p>
+<p>Upgrading an existing installation to this revision can be achieved by
+pointing the package management system at one of Debian's many HTTP mirrors.
+A comprehensive list of mirrors is available at:</p>
+<div class="center">
+  <a href="../../mirror/list">https://www.debian.org/mirror/list</a>
+</div>
+<h2>Miscellaneous Bugfixes</h2>
+<p>This stable update adds a few important corrections to the following packages:</p>
+<table border="0" summary="">
+<tr><th>Package</th>               <th>Reason</th></tr>
+    <tr><td><a href="https://packages.debian.org/src:awstats">awstats</a></td>              <td>Fix cross site scripting issue [CVE-2022-46391]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:base-files">base-files</a></td>              <td>Update /etc/debian_version for the 11.6 point release</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:binfmt-support">binfmt-support</a></td>              <td>Run binfmt-support.service after systemd-binfmt.service</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:clickhouse">clickhouse</a></td>              <td>Fix out-of-bounds read issues [CVE-2021-42387 CVE-2021-42388], buffer overflow issues [CVE-2021-43304 CVE-2021-43305]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:containerd">containerd</a></td>              <td>CRI plugin: Fix goroutine leak during Exec [CVE-2022-23471]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:core-async-clojure">core-async-clojure</a></td>              <td>Fix build failures in test suite</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:dcfldd">dcfldd</a></td>              <td>Fix SHA1 output on big-endian architectures</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:debian-installer">debian-installer</a></td>              <td>Rebuild against proposed-updates; increase Linux kernel ABI to 5.10.0-20</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:debian-installer-netboot-images">debian-installer-netboot-images</a></td>              <td>Rebuild against proposed-updates</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:debmirror">debmirror</a></td>              <td>Add non-free-firmware to the default section list</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:distro-info-data">distro-info-data</a></td>              <td>Add Ubuntu 23.04, Lunar Lobster; update Debian ELTS end dates; correct Debian 8 (jessie) release date</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:dojo">dojo</a></td>              <td>Fix prototype pollution issue [CVE-2021-23450]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:dovecot-fts-xapian">dovecot-fts-xapian</a></td>              <td>Generate dependency on dovecot ABI version in use during build</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:efitools">efitools</a></td>              <td>Fix intermittent build failure due to incorrect dependency in makefile</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:evolution">evolution</a></td>              <td>Move Google Contacts addressbooks to CalDAV since the Google Contacts API has been turned off</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:evolution-data-server">evolution-data-server</a></td>              <td>Move Google Contacts addressbooks to CalDAV since the Google Contacts API has been turned off; fix compatibility with Gmail OAuth changes</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:evolution-ews">evolution-ews</a></td>              <td>Fix retrieval of user certificates belonging to contacts</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:g810-led">g810-led</a></td>              <td>Control device access with uaccess instead of making everything world-writable [CVE-2022-46338]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:glibc">glibc</a></td>              <td>Fix regression in wmemchr and wcslen on CPUs that have AVX2 but not BMI2 (e.g. Intel Haswell)</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:golang-github-go-chef-chef">golang-github-go-chef-chef</a></td>              <td>Fix intermittent test failure</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:grub-efi-amd64-signed">grub-efi-amd64-signed</a></td>              <td>Don't strip Xen binaries, so they work again; include fonts in the memdisk build for EFI images; fix bug in core file code so errors are handled better; bump Debian SBAT level to 4</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:grub-efi-arm64-signed">grub-efi-arm64-signed</a></td>              <td>Don't strip Xen binaries, so they work again; include fonts in the memdisk build for EFI images; fix bug in core file code so errors are handled better; bump Debian SBAT level to 4</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:grub-efi-ia32-signed">grub-efi-ia32-signed</a></td>              <td>Don't strip Xen binaries, so they work again; include fonts in the memdisk build for EFI images; fix bug in core file code so errors are handled better; bump Debian SBAT level to 4</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:grub2">grub2</a></td>              <td>Don't strip Xen binaries, so they work again; include fonts in the memdisk build for EFI images; fix bug in core file code so errors are handled better; bump Debian SBAT level to 4</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:hydrapaper">hydrapaper</a></td>              <td>Add missing dependeny on python3-pil</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:isoquery">isoquery</a></td>              <td>Fix test failure caused by a French translation change in the iso-codes package</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:jtreg6">jtreg6</a></td>              <td>New package, required to build newer openjdk-11 versions</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:lemonldap-ng">lemonldap-ng</a></td>              <td>Improve session destroy propagation [CVE-2022-37186]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:leptonlib">leptonlib</a></td>              <td>Fix divide-by-zero [CVE-2022-38266]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:libapache2-mod-auth-mellon">libapache2-mod-auth-mellon</a></td>              <td>Fix open redirect issue [CVE-2021-3639]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:libbluray">libbluray</a></td>              <td>Fix BD-J support with recent Oracle Java updates</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:libconfuse">libconfuse</a></td>              <td>Fix a heap-based buffer over-read in cfg_tilde_expand [CVE-2022-40320]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:libdatetime-timezone-perl">libdatetime-timezone-perl</a></td>              <td>Update included data</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:libtasn1-6">libtasn1-6</a></td>              <td>Fix out-of-bounds read issue [CVE-2021-46848]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:libvncserver">libvncserver</a></td>              <td>Fix memory leak [CVE-2020-29260]; support larger screen sizes</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:linux">linux</a></td>              <td>New upstream stable release; increase ABI to 20; [rt] Update to 5.10.158-rt77</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:linux-signed-amd64">linux-signed-amd64</a></td>              <td>New upstream stable release; increase ABI to 20; [rt] Update to 5.10.158-rt77</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:linux-signed-arm64">linux-signed-arm64</a></td>              <td>New upstream stable release; increase ABI to 20; [rt] Update to 5.10.158-rt77</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:linux-signed-i386">linux-signed-i386</a></td>              <td>New upstream stable release; increase ABI to 20; [rt] Update to 5.10.158-rt77</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:mariadb-10.5">mariadb-10.5</a></td>              <td>New upstream stable release; security fixes [CVE-2018-25032 CVE-2021-46669 CVE-2022-27376 CVE-2022-27377 CVE-2022-27378 CVE-2022-27379 CVE-2022-27380 CVE-2022-27381 CVE-2022-27382 CVE-2022-27383 CVE-2022-27384 CVE-2022-27386 CVE-2022-27387 CVE-2022-27444 CVE-2022-27445 CVE-2022-27446 CVE-2022-27447 CVE-2022-27448 CVE-2022-27449 CVE-2022-27451 CVE-2022-27452 CVE-2022-27455 CVE-2022-27456 CVE-2022-27457 CVE-2022-27458 CVE-2022-32081 CVE-2022-32082 CVE-2022-32083 CVE-2022-32084 CVE-2022-32085 CVE-2022-32086 CVE-2022-32087 CVE-2022-32088 CVE-2022-32089 CVE-2022-32091]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:mod-wsgi">mod-wsgi</a></td>              <td>Drop X-Client-IP header when it is not a trusted header [CVE-2022-2255]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:mplayer">mplayer</a></td>              <td>Fix several security issues [CVE-2022-38850 CVE-2022-38851 CVE-2022-38855 CVE-2022-38858 CVE-2022-38860 CVE-2022-38861 CVE-2022-38863 CVE-2022-38864 CVE-2022-38865 CVE-2022-38866]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:mutt">mutt</a></td>              <td>Fix gpgme crash when listing keys in a public key block, and public key block listing for old versions of gpgme</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:nano">nano</a></td>              <td>Fix crashes and a potential data loss issue</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:nftables">nftables</a></td>              <td>Fix off-by-one / double free error</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:node-hawk">node-hawk</a></td>              <td>Parse URLs using stdlib [CVE-2022-29167]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:node-loader-utils">node-loader-utils</a></td>              <td>Fix prototype pollution issue [CVE-2022-37599 CVE-2022-37601], regular expression-based denial of service issue [CVE-2022-37603]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:node-minimatch">node-minimatch</a></td>              <td>Improve protection against regular expression-based denial of service [CVE-2022-3517]; fix regression in patch for CVE-2022-3517</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:node-qs">node-qs</a></td>              <td>Fix prototype pollution issue [CVE-2022-24999]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:node-xmldom">node-xmldom</a></td>              <td>Fix prototype pollution issue [CVE-2022-37616]; prevent insertion of non-well-formed nodes [CVE-2022-39353]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:nvidia-graphics-drivers">nvidia-graphics-drivers</a></td>              <td>New upstream release; security fixes [CVE-2022-34670 CVE-2022-34674 CVE-2022-34675 CVE-2022-34677 CVE-2022-34679 CVE-2022-34680 CVE-2022-34682 CVE-2022-42254 CVE-2022-42255 CVE-2022-42256 CVE-2022-42257 CVE-2022-42258 CVE-2022-42259 CVE-2022-42260 CVE-2022-42261 CVE-2022-42262 CVE-2022-42263 CVE-2022-42264]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:nvidia-graphics-drivers-legacy-390xx">nvidia-graphics-drivers-legacy-390xx</a></td>              <td>New upstream release; security fixes [CVE-2022-34670 CVE-2022-34674 CVE-2022-34675 CVE-2022-34677 CVE-2022-34680 CVE-2022-42257 CVE-2022-42258 CVE-2022-42259]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:nvidia-graphics-drivers-tesla-450">nvidia-graphics-drivers-tesla-450</a></td>              <td>New upstream release; security fixes [CVE-2022-34670 CVE-2022-34674 CVE-2022-34675 CVE-2022-34677 CVE-2022-34679 CVE-2022-34680 CVE-2022-34682 CVE-2022-42254 CVE-2022-42256 CVE-2022-42257 CVE-2022-42258 CVE-2022-42259 CVE-2022-42260 CVE-2022-42261 CVE-2022-42262 CVE-2022-42263 CVE-2022-42264]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:nvidia-graphics-drivers-tesla-470">nvidia-graphics-drivers-tesla-470</a></td>              <td>New upstream release; security fixes [CVE-2022-34670 CVE-2022-34674 CVE-2022-34675 CVE-2022-34677 CVE-2022-34679 CVE-2022-34680 CVE-2022-34682 CVE-2022-42254 CVE-2022-42255 CVE-2022-42256 CVE-2022-42257 CVE-2022-42258 CVE-2022-42259 CVE-2022-42260 CVE-2022-42261 CVE-2022-42262 CVE-2022-42263 CVE-2022-42264]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:omnievents">omnievents</a></td>              <td>Add missing dependency on libjs-jquery to the omnievents-doc package</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:onionshare">onionshare</a></td>              <td>Fix denial of service issue [CVE-2022-21689], HTML injection issue [CVE-2022-21690]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:openvpn-auth-radius">openvpn-auth-radius</a></td>              <td>Support verify-client-cert directive</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:postfix">postfix</a></td>              <td>New upstream stable release</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:postgresql-13">postgresql-13</a></td>              <td>New upstream stable release</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:powerline-gitstatus">powerline-gitstatus</a></td>              <td>Fix command injection via malicious repository config [CVE-2022-42906]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:pysubnettree">pysubnettree</a></td>              <td>Fix module build</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:speech-dispatcher">speech-dispatcher</a></td>              <td>Reduce espeak buffer size to avoid synth artifacts</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:spf-engine">spf-engine</a></td>              <td>Fix pyspf-milter failing to start due to an invalid import statement</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:tinyexr">tinyexr</a></td>              <td>Fix heap overflow issues [CVE-2022-34300 CVE-2022-38529]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:tinyxml">tinyxml</a></td>              <td>Fix infinite loop [CVE-2021-42260]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:tzdata">tzdata</a></td>              <td>Update data for Fiji, Mexico and Palestine; update leap seconds list</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:virglrenderer">virglrenderer</a></td>              <td>Fix out-of-bounds write issue [CVE-2022-0135]</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:x2gothinclient">x2gothinclient</a></td>              <td>Make the x2gothinclient-minidesktop package provide the lightdm-greeter virtual package</td></tr>
+    <tr><td><a href="https://packages.debian.org/src:xfig">xfig</a></td>              <td>Fix buffer overflow issue [CVE-2021-40241]</td></tr>
+</table>
+<h2>Security Updates</h2>
+<p>This revision adds the following security updates to the stable release.
+The Security Team has already released an advisory for each of these
+updates:</p>
+<table border="0" summary="">
+<tr><th>Advisory ID</th>  <th>Package</th></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5212">DSA-5212</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5223">DSA-5223</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5224">DSA-5224</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:poppler">poppler</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5225">DSA-5225</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5226">DSA-5226</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:pcs">pcs</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5227">DSA-5227</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:libgoogle-gson-java">libgoogle-gson-java</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5228">DSA-5228</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:gdk-pixbuf">gdk-pixbuf</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5229">DSA-5229</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:freecad">freecad</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5230">DSA-5230</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5231">DSA-5231</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:connman">connman</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5232">DSA-5232</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:tinygltf">tinygltf</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5233">DSA-5233</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:e17">e17</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5234">DSA-5234</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:fish">fish</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5235">DSA-5235</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:bind9">bind9</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5236">DSA-5236</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:expat">expat</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5239">DSA-5239</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:gdal">gdal</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5240">DSA-5240</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:webkit2gtk">webkit2gtk</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5241">DSA-5241</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:wpewebkit">wpewebkit</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5242">DSA-5242</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:maven-shared-utils">maven-shared-utils</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5243">DSA-5243</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:lighttpd">lighttpd</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5244">DSA-5244</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5245">DSA-5245</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5246">DSA-5246</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:mediawiki">mediawiki</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5247">DSA-5247</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:barbican">barbican</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5248">DSA-5248</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:php-twig">php-twig</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5249">DSA-5249</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:strongswan">strongswan</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5250">DSA-5250</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:dbus">dbus</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5251">DSA-5251</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:isc-dhcp">isc-dhcp</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5252">DSA-5252</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:libreoffice">libreoffice</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5253">DSA-5253</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5254">DSA-5254</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:python-django">python-django</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5255">DSA-5255</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:libksba">libksba</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5256">DSA-5256</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:bcel">bcel</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5257">DSA-5257</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:linux-signed-arm64">linux-signed-arm64</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5257">DSA-5257</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:linux-signed-amd64">linux-signed-amd64</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5257">DSA-5257</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:linux-signed-i386">linux-signed-i386</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5257">DSA-5257</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:linux">linux</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5258">DSA-5258</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:squid">squid</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5260">DSA-5260</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:lava">lava</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5261">DSA-5261</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5263">DSA-5263</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5264">DSA-5264</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:batik">batik</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5265">DSA-5265</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:tomcat9">tomcat9</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5266">DSA-5266</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:expat">expat</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5267">DSA-5267</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:pysha3">pysha3</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5268">DSA-5268</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:ffmpeg">ffmpeg</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5269">DSA-5269</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:pypy3">pypy3</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5270">DSA-5270</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:ntfs-3g">ntfs-3g</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5271">DSA-5271</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:libxml2">libxml2</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5272">DSA-5272</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:xen">xen</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5273">DSA-5273</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:webkit2gtk">webkit2gtk</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5274">DSA-5274</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:wpewebkit">wpewebkit</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5275">DSA-5275</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5276">DSA-5276</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:pixman">pixman</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5277">DSA-5277</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:php7.4">php7.4</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5278">DSA-5278</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:xorg-server">xorg-server</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5279">DSA-5279</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:wordpress">wordpress</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5280">DSA-5280</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:grub-efi-amd64-signed">grub-efi-amd64-signed</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5280">DSA-5280</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:grub-efi-arm64-signed">grub-efi-arm64-signed</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5280">DSA-5280</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:grub-efi-ia32-signed">grub-efi-ia32-signed</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5280">DSA-5280</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:grub2">grub2</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5281">DSA-5281</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:nginx">nginx</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5283">DSA-5283</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:jackson-databind">jackson-databind</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5285">DSA-5285</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:asterisk">asterisk</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5286">DSA-5286</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:krb5">krb5</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5287">DSA-5287</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:heimdal">heimdal</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5288">DSA-5288</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:graphicsmagick">graphicsmagick</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5289">DSA-5289</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5290">DSA-5290</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:commons-configuration2">commons-configuration2</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5291">DSA-5291</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:mujs">mujs</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5292">DSA-5292</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:snapd">snapd</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5293">DSA-5293</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5294">DSA-5294</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:jhead">jhead</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5295">DSA-5295</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:chromium">chromium</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5296">DSA-5296</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:xfce4-settings">xfce4-settings</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5297">DSA-5297</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:vlc">vlc</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5298">DSA-5298</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:cacti">cacti</a></td></tr>
+    <tr><td align="center"><a href="../../security/2022/dsa-5299">DSA-5299</a></td>
+        <td align="center"><a href="https://packages.debian.org/src:openexr">openexr</a></td></tr>
+</table>
+<h2>Debian Installer</h2>
+<p>The installer has been updated to include the fixes incorporated
+into stable by the point release.</p>
+<h2>URLs</h2>
+<p>The complete lists of packages that have changed with this revision:</p>
+<div class="center">
+  <a href="https://deb.debian.org/debian/dists/bullseye/ChangeLog">https://deb.debian.org/debian/dists/bullseye/ChangeLog</a>
+</div>
+<p>The current stable distribution:</p>
+<div class="center">
+  <a href="https://deb.debian.org/debian/dists/stable/">https://deb.debian.org/debian/dists/stable/</a>
+</div>
+<p>Proposed updates to the stable distribution:</p>
+<div class="center">
+  <a href="https://deb.debian.org/debian/dists/proposed-updates">https://deb.debian.org/debian/dists/proposed-updates</a>
+</div>
+<p>stable distribution information (release notes, errata etc.):</p>
+<div class="center">
+  <a
+  href="../../releases/stable/">https://www.debian.org/releases/stable/</a>
+</div>
+<p>Security announcements and information:</p>
+<div class="center">
+  <a href="../../security/">https://www.debian.org/security/</a>
+</div>
+<h2>About Debian</h2>
+<p>The Debian Project is an association of Free Software developers who
+volunteer their time and effort in order to produce the completely
+free operating system Debian.</p>
+<h2>Contact Information</h2>
+<p>For further information, please visit the Debian web pages at
+<a href="../../">https://www.debian.org/</a>, send mail to
+&lt;press@debian.org&gt;, or contact the stable release team at
+&lt;debian-release@lists.debian.org&gt;.</p>
+<div class="clr"></div>
+</div> <!-- end content -->
+<div id="footer">
+<hr class="hidecss">
+Back to: other <a href="./">Debian news</a> || <a href="../../">Debian Project homepage</a>.
+<hr>
+<!--UdmComment-->
+<div id="pageLang">
+<div id="langSelector">
+This page is also available in the following languages:
+<div id="langContainer">
+ <a href="20221217.ar.html" title="Arabic" hreflang="ar" lang="ar" rel="alternate">&#1593;&#1585;&#1576;&#1610;&#1577;&nbsp;(Arabiya)</a>
+ <a href="20221217.de.html" title="German" hreflang="de" lang="de" rel="alternate">Deutsch</a>
+ <a href="20221217.es.html" title="Spanish" hreflang="es" lang="es" rel="alternate">espa&ntilde;ol</a>
+ <a href="20221217.fr.html" title="French" hreflang="fr" lang="fr" rel="alternate">fran&ccedil;ais</a>
+ <a href="20221217.ko.html" title="Korean" hreflang="ko" lang="ko" rel="alternate">&#54620;&#44397;&#50612;&nbsp;(Korean)</a>
+ <a href="20221217.nl.html" title="Dutch" hreflang="nl" lang="nl" rel="alternate">Nederlands</a>
+ <a href="20221217.ru.html" title="Russian" hreflang="ru" lang="ru" rel="alternate">&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;&nbsp;(Russkij)</a>
+ <a href="20221217.sv.html" title="Swedish" hreflang="sv" lang="sv" rel="alternate">svenska</a>
+</div>
+How to set <a href="../../intro/cn">the default document language</a>
+</div></div><!--/UdmComment-->
+<hr>
+<div id="footermap">
+<!--UdmComment-->
+<p><strong><a href="/">Home</a></strong></p>
+    <ul id="footermap-cola">
+		<li><a href="../../intro/about">About</a>
+		  <ul>
+		  <li><a href="../../social_contract">Social Contract</a></li>
+		  <li><a href="../../code_of_conduct">Code of Conduct</a></li>
+		  <li><a href="../../intro/free">Free Software</a></li>
+		  <li><a href="../../partners/">Partners</a></li>
+		  <li><a href="../../donations">Donations</a></li>
+          <li><a href="../../legal">Legal Info</a></li>
+          <li><a href="../../legal/privacy">Data Privacy</a></li>
+		  <li><a href="../../contact">Contact Us</a></li>
+		  </ul>
+		</li>
+        <li><a href="../../intro/help">Help Debian</a></li>
+    </ul>
+	<ul id="footermap-colb">
+			<li><a href="../../distrib/">Getting Debian</a>
+			  <ul>
+			  <li><a href="../../distrib/netinst">Network install</a></li>
+			  <li><a href="../../CD/">CD/USB ISO images</a></li>
+			  <li><a href="../../CD/vendors/">CD vendors</a></li>
+			  <li><a href="../../distrib/pre-installed">Pre-installed</a></li>
+			  </ul>
+			</li>
+            <li><a href="../../blends/">Pure Blends</a></li>
+			<li><a href="../../distrib/packages">Debian Packages</a></li>
+			<li><a href="../../devel/">Developers' Corner</a></li>
+	</ul>
+	<ul id="footermap-colc">
+		<li><a href="../../News/">News</a>
+		  <ul>
+		  <li><a href="../../News/weekly/">Project News</a></li>
+		  <li><a href="../../events/">Events</a></li>
+		  </ul>
+		</li>
+    <li><a href="../../doc/">Documentation</a>
+      <ul>
+      <li><a href="../../releases/">Release Info</a></li>
+      <li><a href="../../releases/stable/installmanual">Installation manual</a></li>
+      <li><a href="../../doc/books">Debian Books</a></li>
+      <li><a href="https://wiki.debian.org/">Debian Wiki</a></li>
+      </ul>
+    </li>
+   </ul>
+   <ul id="footermap-cold">
+    <li><a href="../../support">Support</a>
+	  <ul>
+			  <li><a href="../../international/">Debian International</a></li>
+			  <li><a href="../../security/">Security Information</a></li>
+			  <li><a href="../../Bugs/">Bug reports</a></li>
+			  <li><a href="../../MailingLists/">Mailing Lists</a></li>
+			  <li><a href="https://lists.debian.org/">Mailing List Archives</a></li>
+			  <li><a href="../../ports/">Ports/Architectures</a></li>
+      </ul>
+    </li>
+</ul>
+<ul id="footermap-cole">
+  <li><a href="../../sitemap">Site map</a></li>
+  <li><a href="https://search.debian.org/">Search</a></li>
+  <li><a href="https://bits.debian.org">The Debian Blog</a></li>
+  <li><a href="https://micronews.debian.org">Debian Micronews</a></li>
+  <li><a href="https://planet.debian.org">Debian Planet</a></li>
+</ul>
+<!--/UdmComment-->
+</div> <!-- end footermap -->
+<div id="fineprint">
+  <p>See our <a href="../../contact">contact page</a> to get in touch. Web site source code is <a href="https://salsa.debian.org/webmaster-team/webwml">available</a>.</p>
+<p>
+Last Modified: Sat, Mar 11 01:54:16 UTC 2023
+&emsp;
+Last Built: Sun, Apr 30 11:34:14 UTC 2023
+  <br>
+  Copyright &copy; 2022-2023
+ <a href="https://www.spi-inc.org/">SPI</a> and others; See <a href="../../license" rel="copyright">license terms</a><br>
+  Debian is a registered <a href="../../trademark">trademark</a> of Software in the Public Interest, Inc.
+</p>
+</div>
+</div> <!-- end footer -->
+</body>
+</html>
