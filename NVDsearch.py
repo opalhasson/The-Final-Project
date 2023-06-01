@@ -9,7 +9,6 @@ import json
 import requests
 import platform
 from datetime import datetime
-#from reportlab.pdfgen import canvas
 from sklearn import linear_model
 
 
@@ -114,32 +113,29 @@ def predicted_computer_score(cve_dict_list,found_cves):
     avg_score = df['predicted_cve_score'].mean()
     return avg_score
 
-    # call the function and print the result to the screen
-
-def opal(scanType,cve_dict_list):
+def riskAssessmentWay(scanType,cve_dict_list):
     found_cves = readFromFile("fileToLiran.txt")
     if scanType == 'TotalRiskAssessment':
         cves = []
         for cve in found_cves:
             cves.append(cve.split(':')[1].strip())
-        print(predicted_computer_score(cve_dict_list,cves))
+        return predicted_computer_score(cve_dict_list,cves)
     else:
         found_cves.sort()
         component = found_cves[0].split(':')[0].strip()
+        cves = []
         cves_per_comp = []
         for cve in found_cves:
             comp = cve.split(':')[0].strip()
             if component != comp :
-                print("\n" + component + " : ")
-                print(predicted_computer_score(cve_dict_list, cves_per_comp))
+                cves.append(component)
+                cves.append(predicted_computer_score(cve_dict_list, cves_per_comp))
                 cves_per_comp = []
                 component = comp
                 cves_per_comp.append(cve.split(':')[1].strip())
             else :
                 cves_per_comp.append(cve.split(':')[1].strip())
-
-
-
+        return cves
 
 def downloadNVDdbFiles():
     r = requests.get('https://nvd.nist.gov/vuln/data-feeds#JSON_FEED')
@@ -163,10 +159,15 @@ def NVDdbFilesToJson():
         cve_dict_list.append(cve_dict)
     return cve_dict_list
 
-# todo: check for windows
 def componentsOnPC(os_name):
-    output = os.popen("find / -iname '*.app'").read().splitlines()
+    if os_name == 'macos':
+        writeComponentsOnPCtxt(os.popen("find / -iname '*.app'").read().splitlines())
+    elif os_name == 'Windows':
+        writeComponentsOnPCtxt(os.popen('dir /s /b "C:\*.exe"').read().splitlines())
+    else :
+        return None
 
+def writeComponentsOnPCtxt(output):
     with open(components_on_pc_file, "w") as f:
         for line in output:
             app_name = os.path.basename(line.strip())[:-4]
@@ -245,7 +246,7 @@ def SearchCVEsForComponents(components, cve_dict_list):
     # Search for vulnerabilities in the NVD database for each component
     for cve_dict in cve_dict_list:
         matches = []
-        #f.write("\nMatched vulnerabilities in 202" + p.__str__() + ":\n")
+        #f.write("\nMatched vulnerabilities in 202" + p._str_() + ":\n")
         p += 1
         num_of_CVEs = len(json.loads(json.dumps(cve_dict['CVE_Items'])))
 
@@ -263,7 +264,7 @@ def SearchCVEsForComponents(components, cve_dict_list):
                         matches.append(json.dumps(
                             cve_dict['CVE_Items'][i]['cve']['CVE_data_meta']['ID']).replace("\"",""))
                         cts.append(comp)
-                        cves_path.append(comp + " : cve_dict_list[" + (p - 2).__str__() + "]['CVE_Items'][" + i.__str__() + "]")
+                        cves_path.append(comp + " : cve_dict_list[" + (p - 2)._str() + "]['CVE_Items'][" + i.str_() + "]")
         f.write('\n'.join(set(matches)))
         fl.write('\n'.join(cves_path))
     #components = set(components)
@@ -292,20 +293,17 @@ def convert_txt_to_pdf(txt_file_path, pdf_file_path):
     # Save the PDF file and close it
     pdf.save()
 
-def genarateReportFrum(cve_dict_list):
+def genarateReportFrum(risk_assessment_way,cve_dict_list):
     f = open("report.txt", "w")
     f.write("Risk Assessment\n\nDate of assessment : " + datetime.today().__str__() + "\n")
-    f.write("The total risk assessment of your pc is " + predicted_computer_score(cve_dict_list).__str__()+ "\n")
+    f.write("The total risk assessment of your pc is " + riskAssessmentWay(risk_assessment_way,cve_dict_list).__str__() + "\n")
     f.write("CVEs the were found relevent to youe pc's components:\n")
-    f.write('\n'.join(readFromFile(match_found_CVEs_file)) +"\n\n\n")
+    f.write('\t\t\t'.join(readFromFile(match_found_CVEs_file)) +"\n\n\n")
     f.write("CVEs that were mentioned in the darkweb :\n")
     f.write('\n'.join(readFromFile("CVEsInTOR.txt")) +"\n\n\n")
-
-
-
     f.close()
 
-def NVDsearch():
+def NVDsearch(risk_assessment_way):
     dir = os.listdir(base_dir)
     print(dir)
 
@@ -321,6 +319,10 @@ def NVDsearch():
     # scan the computer:
     # Determine operating system
     os_name = platform.system()
+    if (os_name != 'Windows' and os_name != 'Darwin') :
+        print("opal")
+
+    print(os_name + " " + risk_assessment_way) # todo : delete it
 
     components = readFromFile(components_after_comparison_file)
 
@@ -340,7 +342,7 @@ def NVDsearch():
         SearchCVEsForComponents(components, cve_dict_list)
 
 
-    #genarateReportFrum(cve_dict_list)
+    genarateReportFrum(risk_assessment_way,cve_dict_list)
     download_dir = os.path.expanduser("~") + "/Downloads"
     #convert_txt_to_pdf("report.txt", download_dir + "/output.pdf")
 
@@ -355,10 +357,3 @@ def test():
 
     with open('components_in_NVD_db.txt', 'w') as f:
         f.write(''.join(lines))
-
-
-
-
-#test()
-#NVDsearch()
-opal("o",NVDdbFilesToJson())
