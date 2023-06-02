@@ -1,3 +1,5 @@
+import os
+
 import requests
 import random
 
@@ -136,7 +138,8 @@ def Scraper():
 
 def CVEsInTOR():
     url = "http://5ekxbftvqg26oir5wle3p27ax3wksbxcecnm6oemju7bjra2pn26s3qd.onion/News/2022/20221217"
-    torSearcher(url)
+    if not os.path.exists("forum.txt") :
+        torSearcher(url)
     match_cves = readFromFile("match_found_CVEs.txt")
     f = open("CVEsInTOR.txt", "w")
     with open("forum.txt", 'r') as file:
@@ -144,7 +147,6 @@ def CVEsInTOR():
             for cve in match_cves:
                 if cve in line:
                     f.write(cve + "\n")
-                #else : f.write(cve + " : 0\n")
 
 
 
