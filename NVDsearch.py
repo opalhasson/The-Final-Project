@@ -21,7 +21,7 @@ match_found_CVEs_file = "match_found_CVEs.txt"
 
 
 # todo: what it spouse to do?
-def predicted_cve_score(cve_dict_list, found_cves):
+def predicted_cve_score(cve_dict_list,found_cves):
     data = []
     for cve in found_cves:
 
@@ -48,18 +48,110 @@ def predicted_cve_score(cve_dict_list, found_cves):
         base_metric_v2 = impact.get('baseMetricV2', {})
         cvss_v2 = base_metric_v2.get('cvssV2', {})
         base_score = cvss_v2.get('baseScore', None)
+        authentication = cvss_v2.get('authentication', None)
+        accessVector = cvss_v2.get('accessVector', None)
+        accessComplexity = cvss_v2.get('accessComplexity', None)
+        confidentialityImpact = cvss_v2.get('confidentialityImpact', None)
+        integrityImpact = cvss_v2.get('integrityImpact', None)
+        availabilityImpact = cvss_v2.get('availabilityImpact', None)
+
         exploitability_score = base_metric_v2.get('exploitabilityScore', None)
         impact_score = base_metric_v2.get('impactScore', None)
         severity = base_metric_v2.get('severity', None)
+        acInsufInfo = base_metric_v2.get('acInsufInfo', None)
+
+        obtainAllPrivilege = base_metric_v2.get('obtainAllPrivilege', None)
+        obtainUserPrivilege = base_metric_v2.get('obtainUserPrivilege', None)
+        obtainOtherPrivilege = base_metric_v2.get('obtainOtherPrivilege', None)
+        userInteractionRequired = base_metric_v2.get('userInteractionRequired', None)
+
+
         data.append(
             [cve_id, base_score,
-             exploitability_score, impact_score, severity])
+             exploitability_score, impact_score, severity,authentication,accessVector,accessComplexity,confidentialityImpact,integrityImpact,availabilityImpact,acInsufInfo, obtainAllPrivilege, obtainUserPrivilege, obtainOtherPrivilege, userInteractionRequired])
+
 
     # Create the dataframe
-    df = pd.DataFrame(data, columns=['cve_id', 'base_score', 'exploitability_score', 'impact_score', 'severity'])
+    df = pd.DataFrame(data, columns=['cve_id', 'base_score', 'exploitability_score', 'impact_score', 'severity','authentication','accessVector','accessComplexity','confidentialityImpact','integrityImpact','availabilityImpact','acInsufInfo', 'obtainAllPrivilege' ,'obtainUserPrivilege', 'obtainOtherPrivilege', 'userInteractionRequired'])
+
+    # Create a column to indicate if CVE is listed in the file
+    with open('CVEsInTOR.txt', 'r') as file:
+        tor_cves = file.read().splitlines()
+    df['in_CVEsInTOR'] = df['cve_id'].isin(tor_cves).astype(int)
+
+    # Map categorical columns to numeric values
+    df['severity_numeric'] = df['severity'].map({'LOW': 0, 'MEDIUM': 1, 'HIGH': 2})
+    df['authentication_numeric'] = df['authentication'].map({'NONE': 0, 'SINGLE': 1})
+    df['accessVector_numeric'] = df['accessVector'].map({'ADJACENT_NETWORK': 0, 'LOCAL': 1, 'NETWORK': 2})
+    df['accessComplexity_numeric'] = df['accessComplexity'].map({'LOW': 0, 'MEDIUM': 1, 'HIGH': 2})
+    df['confidentialityImpact_numeric'] = df['confidentialityImpact'].map({'NONE': 0, 'COMPLETE': 2, 'PARTIAL': 1})
+    df['integrityImpact_numeric'] = df['confidentialityImpact'].map({'NONE': 0, 'COMPLETE': 2, 'PARTIAL': 1})
+    df['availabilityImpact_numeric'] = df['availabilityImpact'].map({'NONE': 0, 'COMPLETE': 2, 'PARTIAL': 1})
+    df['acInsufInfo_numeric'] = df['acInsufInfo'].map(
+        lambda x: 0 if str(x).lower() in ['false', 'False', 'FALSE'] else (
+            1 if str(x).lower() in ['true', 'True', 'TRUE'] else None))
+    df['obtainAllPrivilege_numeric'] = df['obtainAllPrivilege'].map(  lambda x: 0 if str(x).lower() in ['false', 'false', 'false'] else (
+            1 if str(x).lower() in ['true', 'true', 'true'] else None))
+    df['obtainUserPrivilege_numeric'] = df['obtainUserPrivilege'].map(  lambda x: 0 if str(x).lower() in ['false', 'false', 'false'] else (
+            1 if str(x).lower() in ['true', 'true', 'true'] else None))
+    df['obtainOtherPrivilege_numeric'] = df['obtainOtherPrivilege'].map(  lambda x: 0 if str(x).lower() in ['false', 'false', 'false'] else (
+            1 if str(x).lower() in ['true', 'true', 'true'] else None))
+    df['userInteractionRequired_numeric'] = df['userInteractionRequired'].map(  lambda x: 0 if str(x).lower() in ['false', 'false', 'false'] else (
+            1 if str(x).lower() in ['true', 'true', 'true'] else None))
 
     # Write the dataframe to a CSV file
     df.to_csv('mydata.csv', index=False)
+
+    # Read the CSV file into a pandas dataframe
+    df = pd.read_csv('mydata.csv')
+
+    # todo: one_hot_encoded good
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_severity = pd.get_dummies(df['severity'], prefix='severity')
+    #
+    # # Performing one-hot encoding on the 'Country' column
+    # one_hot_authentication = pd.get_dummies(df['authentication'], prefix='authentication')
+    #
+    # # Performing one-hot encoding on the 'Country' column
+    # one_hot_accessVector = pd.get_dummies(df['accessVector'], prefix='accessVector')
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_accessComplexity = pd.get_dummies(df['accessComplexity'], prefix='accessComplexity')
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_confidentialityImpact = pd.get_dummies(df['confidentialityImpact'], prefix='confidentialityImpact')
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_integrityImpact = pd.get_dummies(df['integrityImpact'], prefix='integrityImpact')
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_availabilityImpact = pd.get_dummies(df['availabilityImpact'], prefix='availabilityImpact')
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_aacInsufInfo = pd.get_dummies(df['acInsufInfo'], prefix='acInsufInfo')
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_obtainAllPrivilege = pd.get_dummies(df['obtainAllPrivilege'], prefix='obtainAllPrivilege')
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_obtainUserPrivilege = pd.get_dummies(df['obtainUserPrivilege'], prefix='obtainUserPrivilege')
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_oobtainOtherPrivilege = pd.get_dummies(df['obtainOtherPrivilege'], prefix='obtainOtherPrivilege')
+    #
+    # # Performing one-hot encoding on the 'severity' column
+    # one_hot_userInteractionRequired = pd.get_dummies(df['userInteractionRequired'], prefix='userInteractionRequired')
+    #
+    # # Concatenating the one-hot encoded DataFrame with the original DataFrame
+    # df_encoded = pd.concat(
+    #     [df, one_hot_severity, one_hot_authentication, one_hot_accessVector, one_hot_accessComplexity,
+    #      one_hot_confidentialityImpact, one_hot_integrityImpact, one_hot_availabilityImpact, one_hot_aacInsufInfo,
+    #      one_hot_obtainAllPrivilege, one_hot_obtainUserPrivilege, one_hot_oobtainOtherPrivilege,
+    #      one_hot_userInteractionRequired], axis=1)
+    #
+    # # Write the dataframe to a CSV file
+    # df_encoded.to_csv('mydata.csv', index=False)
 
     # Read the CSV file into a new dataframe
     df_new = pd.read_csv('mydata.csv')
@@ -88,10 +180,11 @@ def predicted_cve_score(cve_dict_list, found_cves):
     df = pd.read_csv("mydata.csv")
 
     # Convert the severity field to numerical form
-    df['severity'] = df['severity'].map({'LOW': 0, 'MEDIUM': 5, 'HIGH': 10})
+    # df['severity'] = df['severity'].map({'LOW': 0, 'MEDIUM': 5, 'HIGH': 10})
 
-    # Convert all variables in X to int and replace NaN with 0
-    X = df[['exploitability_score', 'impact_score', 'severity']].fillna(0).astype(int)
+    c_ignore = ['cve_id','base_score','severity','severity_numeric','authentication','authentication_numeric','accessVector','accessVector_numeric','accessComplexity','accessComplexity_numeric','confidentialityImpact','confidentialityImpact_numeric','integrityImpact','integrityImpact_numeric','availabilityImpact','availabilityImpact_numeric','acInsufInfo','acInsufInfo_numeric', 'obtainAllPrivilege','obtainAllPrivilege_numeric','obtainUserPrivilege','obtainUserPrivilege_numeric', 'obtainOtherPrivilege','obtainOtherPrivilege_numeric','userInteractionRequired','userInteractionRequired_numeric']
+
+    X = df.drop(c_ignore, axis=1).fillna(0).astype(int)  # Features (input)
 
     # Select target variable y
     y = df['base_score'].fillna(0).astype(int)
